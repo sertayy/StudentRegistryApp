@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "StudentRegistryApp": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7052",
+      "workingDirectory": "C:\\Users\\s.akpinar\\source\\repos\\StudentRegistryApp"
+    }
+  }
+}
