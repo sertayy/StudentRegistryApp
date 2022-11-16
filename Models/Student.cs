@@ -10,4 +10,6 @@ namespace StudentRegistryApp.Models
         public DateTime Birthday { get; set; }
         public string Birthplace { get; set; }
     }
+
+    // Improvement: A new model a without an id field can be implemented to prevent the overhead while giving the input at create and update functions.
 }

@@ -1,30 +1,26 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Hosting;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using StudentRegistryApp.Data;
 using StudentRegistryApp.Services;
+using System;
 
+[assembly: WebJobsStartup(typeof(StudentRegistryApp.Startup))]
 namespace StudentRegistryApp
 {
-    public class Startup
+    public class Startup: IWebJobsStartup
     {
-        // Use this method to add services to the container.  
-        public void ConfigureServices(IServiceCollection services, IConfiguration configuration)
+        public void Configure(IWebJobsBuilder builder)
         {
-            services.AddDbContext<StudentContext>(options => options.UseSqlServer(configuration.GetConnectionString("StudentRegistryAppConnectionString")));
-            services.AddScoped<IStudentService, StudentService>();
-            services.AddRazorPages();
-            //services.AddHttpContextAccessor();
-            //services.AddControllers();
-            //services.AddTransient<IStudentService, StudentService>();
-            //services.AddMvc();
-
-        }
-        // Use this method to configure the HTTP request pipeline.  
-        public void Configure(IApplicationBuilder app)
-        {
-            app.UseMvc();
+            //var sqlConnectionString = Environment.GetEnvironmentVariable("SqlConnectionString") ?? string.Empty;
+            //builder.Services.AddDbContext<StudentContext>((options) =>
+            //    options.UseSqlServer(sqlConnectionString, sqlOptions =>
+            //        sqlOptions.EnableRetryOnFailure(3, TimeSpan.FromSeconds(2), null)
+            //    )
+            //);
+            builder.Services.AddDbContext<StudentContext>();
+            builder.Services.AddScoped<IStudentService, StudentService>();
         }
     }
 }

@@ -101,6 +101,7 @@ namespace StudentRegistryApp.Controllers
         {
             try
             {
+                //Improvement: When the user enters the id, the information to the related student can be returned instead of the resetted values.
                 logger.LogInformation($"Updating the student item.");
                 string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
                 Student data = JsonConvert.DeserializeObject<Student>(requestBody);

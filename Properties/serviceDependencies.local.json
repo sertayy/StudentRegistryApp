@@ -6,6 +6,13 @@
     "storage1": {
       "type": "storage.emulator",
       "connectionId": "AzureWebJobsStorage"
+    },
+    "mssql1": {
+      "secretStore": "LocalSecretsFile",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.Sql/servers/studentregistryserver/databases/StudentRegistryDB",
+      "type": "mssql.azure",
+      "connectionId": "ConnectionStrings:StudentRegistryAppConnectionString",
+      "dynamicId": null
     }
   }
 }

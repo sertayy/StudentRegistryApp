@@ -34,8 +34,7 @@ namespace StudentRegistryApp.Services
 
         public void Create(Student newStudent)
         {
-            //TODO: ID CHECK!
-            HelperFunctions.isStudentValid(newStudent);
+            HelperFunctions.isStudentValid(newStudent, _context);
             _context.students.Add(newStudent);
             _context.SaveChanges();
         }
